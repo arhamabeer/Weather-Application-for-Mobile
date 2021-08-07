@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import SearchBar from './search';
-import {haze, snow, sunny, rainy} from '../assets';
+import {haze, snow, sunny, rainy, cloud} from '../assets';
 
 export default function Weather({weatherData, fetchAPIdata}) {
   const [bgImg, setBgImg] = useState(null);
@@ -22,15 +22,16 @@ export default function Weather({weatherData, fetchAPIdata}) {
   const [{main}] = weather;
 
   useEffect(() => {
-    console.log(main);
+    // console.log(main);
     setBgImg(getBgImg(main));
   }, [weatherData]);
 
   const getBgImg = main => {
     if (main === 'Snow') return snow;
     if (main === 'Clear') return sunny;
-    if (main === 'Rainy') return rainy;
+    if (main === 'Rain') return rainy;
     if (main === 'Haze') return haze;
+    if (main === 'Clouds') return cloud;
     return haze;
   };
   let textColor =
@@ -51,10 +52,22 @@ export default function Weather({weatherData, fetchAPIdata}) {
             }}>
             {name}
           </Text>
-          <Text style={{...styles.headerText, color: textColor, fontWeight: 'bold', fontSize: 43}}>
+          <Text
+            style={{
+              ...styles.headerText,
+              color: textColor,
+              fontWeight: 'bold',
+              fontSize: 43,
+            }}>
             {tempC.toFixed(2)}°C
           </Text>
-          <Text style={{...styles.headerText, color: textColor, fontWeight: 'bold', fontSize: 43}}>
+          <Text
+            style={{
+              ...styles.headerText,
+              color: textColor,
+              fontWeight: 'bold',
+              fontSize: 43,
+            }}>
             {main}
           </Text>
         </View>

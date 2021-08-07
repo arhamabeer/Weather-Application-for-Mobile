@@ -31,8 +31,8 @@ export default function App() {
 
   if (!loaded) {
     return (
-      <View style={styles.sectionContainer}>
-        <ActivityIndicator color="blue" size={46} />
+      <View style={{...styles.sectionContainer, justifyContent: 'center', alignItems: 'center', backgroundColor: 'black'}}>
+        <ActivityIndicator color="red" size={66} />
       </View>
     );
   } else if (weatherData === null) {
