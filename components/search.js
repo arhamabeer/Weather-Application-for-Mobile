@@ -7,14 +7,15 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-export default function SearchBar({fetchAPIdata}) {
+export default function SearchBar({fetchAPIdata, searchColor}) {
   const [cityname, SetCityname] = useState(null);
 
   return (
     <View style={styles.sectionContainer}>
       <TextInput
         placeholder="Enter City Name"
-        style={{fontSize: 19}}
+        placeholderTextColor={searchColor}
+        style={{fontSize: 19, color: searchColor}}
         value={cityname}
         onChangeText={text => {
           SetCityname(text);

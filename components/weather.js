@@ -36,13 +36,30 @@ export default function Weather({weatherData, fetchAPIdata}) {
     return haze;
   };
   let textColor =
-    bgImg === sunny ? 'black' : bgImg === haze ? 'black' : 'white';
+    bgImg === sunny
+      ? 'black'
+      : bgImg === snow
+      ? 'black'
+      : bgImg === rainy
+      ? 'black'
+      : bgImg === haze
+      ? 'black'
+      : 'white';
+
+  let searchColor =
+    bgImg === sunny
+      ? 'white'
+      : bgImg === rainy
+      ? '#fff'
+      : bgImg === cloud
+      ? '#b8a7a7'
+      : '#fff';
   let tempC = temp - 273.15;
   let feelC = feels_like - 273.15;
   return (
     <View style={styles.sectionContainer}>
       <ImageBackground source={bgImg} style={styles.bgImg} resizeMode="cover">
-        <SearchBar fetchAPIdata={fetchAPIdata} />
+        <SearchBar fetchAPIdata={fetchAPIdata} searchColor={searchColor} />
         <View style={{alignItems: 'center'}}>
           <Text
             style={{
