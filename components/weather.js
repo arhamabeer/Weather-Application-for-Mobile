@@ -3,12 +3,13 @@ import {
   Dimensions,
   ImageBackground,
   StyleSheet,
-  TextInput,
   Text,
   View,
 } from 'react-native';
 import SearchBar from './search';
 import {haze, snow, sunny, rainy, cloud} from '../assets';
+
+// import LocationSet from './location';
 
 export default function Weather({weatherData, fetchAPIdata}) {
   const [bgImg, setBgImg] = useState(null);
@@ -59,7 +60,7 @@ export default function Weather({weatherData, fetchAPIdata}) {
               fontWeight: 'bold',
               fontSize: 43,
             }}>
-            {tempC.toFixed(2)}°C
+            {tempC.toFixed()}°C
           </Text>
           <Text
             style={{
@@ -72,14 +73,15 @@ export default function Weather({weatherData, fetchAPIdata}) {
           </Text>
         </View>
         <View style={styles.extraInfo}>
-          <Text style={styles.info}>Feels Like: {feelC.toFixed(2)}°C</Text>
+          <Text style={styles.info}>Feels Like: {feelC.toFixed()}°C</Text>
           <Text style={styles.info}>Humidity: {humidity}%</Text>
-          <Text style={styles.info}>Min Temp: {temp_min}°C</Text>
-          <Text style={styles.info}>Max Temp: {temp_max}°C</Text>
+          <Text style={styles.info}>Min Temp: {temp_min.toFixed()}°C</Text>
+          <Text style={styles.info}>Max Temp: {temp_max.toFixed()}°C</Text>
           <Text style={styles.info}>Air Pressure: {pressure} hPa</Text>
           <Text style={styles.info}>Wind Speed: {speed} m/s</Text>
         </View>
       </ImageBackground>
+      {/* <LocationSet /> */}
     </View>
   );
 }
