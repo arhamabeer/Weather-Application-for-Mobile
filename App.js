@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, TextInput, View, ActivityIndicator} from 'react-native';
+import {StyleSheet, Text, View, ActivityIndicator, Image} from 'react-native';
 import Weather from './components/weather';
 import SearchBar from './components/search';
 
@@ -17,6 +17,8 @@ export default function App() {
       if (responce.status === 200) {
         const data = await responce.json();
         setWeatherData(data);
+      } else {
+        setWeatherData(null);
       }
       setLoaded(true);
     } catch (error) {
@@ -31,22 +33,50 @@ export default function App() {
 
   if (!loaded) {
     return (
-      <View style={{...styles.sectionContainer, justifyContent: 'center', alignItems: 'center', backgroundColor: 'black'}}>
+      <View
+        style={{
+          ...styles.sectionContainer,
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: 'black',
+        }}>
         <ActivityIndicator color="red" size={66} />
       </View>
     );
   } else if (weatherData === null) {
     return (
-      <View style={styles.sectionContainer}>
-        <SearchBar />
-        <TextInput>Invalid City Name! please enter correct city anme</TextInput>
+      <View
+        style={{
+          ...styles.sectionContainer,
+          backgroundColor: '#17315e',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <Image
+          source={require('./assets/icons/warning.png')}
+          style={{width: 140, height: 140}}
+        />
+        <SearchBar
+          fetchAPIdata={fetchAPIdata}
+          searchColor={'white'}
+          post={'true'}
+        />
+        <Text
+          style={{
+            color: 'white',
+            fontSize: 20,
+            textAlign: 'center',
+            marginTop: 15,
+          }}>
+          Invalid City Name! {'\n'}Please enter correct City name.
+        </Text>
       </View>
     );
   }
 
   return (
     <View style={styles.sectionContainer}>
-      <Weather weatherData={weatherData} fetchAPIdata={fetchAPIdata}/>
+      <Weather weatherData={weatherData} fetchAPIdata={fetchAPIdata} />
     </View>
   );
 }
