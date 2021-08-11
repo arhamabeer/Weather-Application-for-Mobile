@@ -57,7 +57,7 @@ export default function Weather({weatherData, fetchAPIdata}) {
   let tempC = temp - 273.15;
   let feelC = feels_like - 273.15;
   let temp_minC = temp_min - 273.15;
-  let temp_maxC = temp_max - 237.15;
+  let temp_maxC = temp_max - 273.15;
   return (
     <View style={styles.sectionContainer}>
       <ImageBackground source={bgImg} style={styles.bgImg} resizeMode="cover">
