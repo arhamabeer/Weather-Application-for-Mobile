@@ -56,6 +56,8 @@ export default function Weather({weatherData, fetchAPIdata}) {
       : '#fff';
   let tempC = temp - 273.15;
   let feelC = feels_like - 273.15;
+  let temp_minC = temp_min - 273.15;
+  let temp_maxC = temp_max - 237.15;
   return (
     <View style={styles.sectionContainer}>
       <ImageBackground source={bgImg} style={styles.bgImg} resizeMode="cover">
@@ -92,8 +94,8 @@ export default function Weather({weatherData, fetchAPIdata}) {
         <View style={styles.extraInfo}>
           <Text style={styles.info}>Feels Like: {feelC.toFixed()}°C</Text>
           <Text style={styles.info}>Humidity: {humidity}%</Text>
-          <Text style={styles.info}>Min Temp: {temp_min.toFixed()}°C</Text>
-          <Text style={styles.info}>Max Temp: {temp_max.toFixed()}°C</Text>
+          <Text style={styles.info}>Min Temp: {temp_minC.toFixed()}°C</Text>
+          <Text style={styles.info}>Max Temp: {temp_maxC.toFixed()}°C</Text>
           <Text style={styles.info}>Air Pressure: {pressure} hPa</Text>
           <Text style={styles.info}>Wind Speed: {speed} m/s</Text>
         </View>
